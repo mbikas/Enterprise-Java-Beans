@@ -1,0 +1,3 @@
+Project Description:
+
+A goal of this homework is to get familiar with Enterprise JavaBeans. You will explore how the concept of parallel invocations of the same methods by different clients works in EJB. Implement a system of distributed objects of your choosing, you will select specific domains and create multiple distributed EJB components in JVMs that communicate with one another. You will implement multiple clients who concurrently invoke methods of the home interfaces of your EJBs in loops using some order (e.g., first the method m is invoked, then the method k is invoked), or maybe at random if the component is stateless. 

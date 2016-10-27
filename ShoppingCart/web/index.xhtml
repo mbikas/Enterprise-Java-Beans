@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- @author Bikas -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Shopping Cart</title>
+    </h:head>
+    <h:body>
+        <!-- Here All the Items from the Shop will be displayed -->
+
+        <h3><center>Shopping Mall</center></h3>
+
+        <center>
+            <h:dataTable value="#{index.products}" var="p" >
+            <h:column>
+                <f:facet name="header"/>
+                <h:outputLink value="product.xhtml">
+                    <f:param name="query" value="#{p.code}"/>
+                    <b><h:outputText value="#{p.name}"/></b>
+                </h:outputLink>
+            </h:column>
+            </h:dataTable>
+        </center>
+    </h:body>
+</html>
+

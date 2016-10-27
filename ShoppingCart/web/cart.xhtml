@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- @author Bikas -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Cart</title>
+    </h:head>
+    <h:body>
+
+        <font color="#0000ff"><h:outputText id="cartSize" value="Your cart has #{cart.cartCount} items(s)"/>
+        </font><br/><br/>
+        
+        <table border="line">
+            <tr><td>Cart Items</td><td>Unit Price</td><td>Quantity</td><td>Total</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <ui:repeat value="#{cart.cartContents.entrySet().toArray()}" var="p">
+            
+                <tr>
+                    <td>#{p.key.name}</td><td>#{p.key.price}</td><td>#{p.value}</td>
+                    <td><h:outputText rendered="#{p.value > 1}" value="#{p.key.price * p.value}"/>
+                        <h:outputText rendered="#{p.value == 1}" value="#{p.key.price}"/>
+                    </td>
+                    <h:form>
+                    <td><h:commandButton value="Remove From Cart" action="#{cart.remove(p.key)}" /></td>
+                    <td><h:commandButton value="Add One More To Cart" action="#{cart.add(p.key)}" /></td>
+                    </h:form>
+                </tr>
+            </ui:repeat>
+        </table>
+
+        <br/><br/>
+        <h:outputLink value="index.xhtml">Home</h:outputLink>
+
+    </h:body>
+</html>
+

@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- @author Bikas -->
+<html
+
+    xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core" >
+    <h:head>
+        <title>Product</title>
+    </h:head>
+    <h:body>
+
+        #{product.checkIfQueryExists()}
+        <center><font color="#0000ff"><h:outputText id="cartSize" value="Your cart has #{cart.cartCount} items(s)"/></font></center> <br/><br/>
+
+           <center>
+               <table>
+                   <tr><td>Your Selected Product : </td><td><b>#{product.product.name} </b></td></tr>
+                   <tr><td>Price</td><td><b>#{product.product.price} </b></td></tr>
+                   <tr><td colspan="2">&nbsp;</td></tr>
+
+                   <!-- add to cart button form -->
+                   <tr><td>&nbsp;</td><td>
+                   <h:form id='form'>
+                       <input type="hidden" name="query" value="#{product.query}" />
+                       <h:commandButton value="Add to Cart" action="#{product.addToCart()}">
+                           <f:ajax execute="@form" render=":cartSize"/>
+                       </h:commandButton>
+                   </h:form></td></tr>
+                </table>
+           </center>
+           <br/><br/><br/>
+
+          <center>
+            <h:outputLink value="cart.xhtml">Your Cart</h:outputLink><br/>
+            <h:outputLink value="index.xhtml">Back</h:outputLink>
+           </center>
+    </h:body>
+
+</html>
+
